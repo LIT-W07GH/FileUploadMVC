@@ -1,0 +1,30 @@
+﻿@model HomePageViewModel
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+        <form method="post" action="/home/upload" enctype="multipart/form-data">
+            <input class="form-control" type="text" name="description" placeholder="Description"/>
+            <br />
+            <input type="file" name="image" class="form-control"/>
+            <br />
+            <button class="btn btn-primary">Upload</button>
+        </form>
+        <table class="table table-bordered">
+            <tr>
+                <th>Image</th>
+                <th>Description</th>
+            </tr>
+            @foreach (var image in Model.Images)
+            {
+                <tr>
+                    <td>
+                        <img src='/uploads/getimage?filename=@image.FileName' style="width:200px"/>
+                    </td>
+                    <td>
+                        @image.Description
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
